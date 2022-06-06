@@ -8,14 +8,11 @@ import TelaHome from './components/TelaHome';
 import TelaSubscriptions from './components/TelaSubscription';
 import TelaPlano from './components/TelaPlano';
 import TelaUser from './components/TelaUser';
+import TelaUpdate from './components/TelaUpdate';
 
 
 function App() {
-  const [token, setToken] = useState()
-  const [senha, setSenha] = useState()
-  const [nome, setNome] = useState()
   const [idPlano, setIdPlano] = useState(null)
-  const [user, setUser] = useState()
   const [planos, setPlanos] = useState([])
   const [dadosCartao, setDadosCartao] = useState(false)
   const [planoSelecionado, setPlanoSelecionado] = useState({"id": "loading",
@@ -35,7 +32,7 @@ function App() {
     <div className='container-geral'>
       <BrowserRouter >
 
-        <UserContext.Provider value={{ token, setToken, idPlano, setIdPlano, senha, setSenha, user, setUser, planos, setPlanos, planoSelecionado, setPlanoSelecionado, nome, setNome, dadosCartao, setDadosCartao }}>
+        <UserContext.Provider value={{ idPlano, setIdPlano,  planos, setPlanos, planoSelecionado, setPlanoSelecionado, dadosCartao, setDadosCartao }}>
           <Routes>
             <Route path="/" element={<TelaLogin />} />
             <Route path="/sign-up" element={<TelaSingUp />} />
@@ -43,6 +40,7 @@ function App() {
             <Route path="/subscriptions" element={< TelaSubscriptions />} />
             <Route path="/subscriptions/:idPlano" element={<TelaPlano />} />
             <Route path="/users/:idUsuario" element={<TelaUser />} />
+            <Route path="/users/:idUsuario/update" element={<TelaUpdate />}/>
 
           </Routes>
         </UserContext.Provider>

@@ -9,10 +9,15 @@ import UserContext from '../UserContext'
 
 export default function TelaLogin() {
     const POSTLOGIN = 'https://mock-api.driven.com.br/api/v4/driven-plus/auth/login'
-    const { token, setToken, senha, setSenha, user, setUser, idPlano } = useContext(UserContext);
+
+    const {  idPlano } = useContext(UserContext);
+
     const [email, setEmail] = useState()
+    const [senha, setSenha] = useState()
+    
     const navigate = useNavigate();
-    console.log(idPlano)
+
+
     function gerarFormulario(event) {
         event.preventDefault();
         const body = {
@@ -36,6 +41,7 @@ export default function TelaLogin() {
     function gerarNome(response){
         const userName = response.data.name
         const infoUsuario ={
+            id: response.data.id,
             name: response.data.name,
             cpf: response.data.cpf,
             email: response.data.email,

@@ -27,6 +27,8 @@ export default function TelaHome() {
     const dataDesSerelizada = JSON.parse(dataLocalSerializada)
     const tokenLocal = dataDesSerelizada
 
+    const perks = planoSelecionadoLocal .membership.perks
+
     const config = {
         headers: {
             "Authorization": `Bearer ${tokenLocal}`
@@ -34,7 +36,7 @@ export default function TelaHome() {
     }
 
 
-    const perks = planoSelecionadoLocal .membership.perks
+   
    
     function cancelarPlano(){
         console.log("entrou no cancelar")
@@ -52,11 +54,15 @@ export default function TelaHome() {
         navigate('/subscriptions')
     }
 
+    function mudarParaTelaUser(){
+        navigate(`/users/:${planoSelecionadoLocal.id}`)
+    }
+
     return (
         <ContainerHome>
             <Cabecalho >
-                <img src={planoSelecionadoLocal .membership.image} alt="" width="50px" height="50px"/>
-                <ion-icon name="person-circle-outline"></ion-icon>
+                <img src={planoSelecionadoLocal.membership.image} alt="" width="50px" height="50px"/>
+                <ion-icon onClick={()=>mudarParaTelaUser()} name="person-circle-outline"></ion-icon>
             </Cabecalho>
             <h2>Olá, {nameLocal}</h2>
             <div>

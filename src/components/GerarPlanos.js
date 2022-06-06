@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import styled from 'styled-components';
 import UserContext from '../UserContext'
 export default function GerarPlanos() {
-    console.log("entrou no gerar")
+
     const { planos, setPlanos, idPlano, setIdPlano } = useContext(UserContext)
 
     const navigate = useNavigate();
