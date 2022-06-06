@@ -35,8 +35,17 @@ export default function TelaLogin() {
 
     function gerarNome(response){
         const userName = response.data.name
+        const infoUsuario ={
+            name: response.data.name,
+            cpf: response.data.cpf,
+            email: response.data.email,
+            currentPassword: response.data.password,
+        }
         const NameSerializada = JSON.stringify(userName)
         localStorage.setItem("userName",NameSerializada)
+
+        const infoSerializada = JSON.stringify(infoUsuario)
+        localStorage.setItem("userInfo",infoSerializada)
 gerarToken(response)
     }
     function irParaTElaCadastro() {
@@ -46,8 +55,8 @@ gerarToken(response)
         <>
             <ContainerLogin>
                 <img src={logo} width="300px" height="70px" />
-                <input className='login' placeholder='E-mail' type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                <input className='login' placeholder='Senha' type="password" value={senha} onChange={(e) => setSenha(e.target.value)} />
+                <input placeholder='E-mail' type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <input placeholder='Senha' type="password" value={senha} onChange={(e) => setSenha(e.target.value)} />
                 <Enter onClick={gerarFormulario}>ENTRAR</Enter>
                 <Redirecionamento onClick={irParaTElaCadastro}> Não possuí uma conta? Cadastre-se </Redirecionamento>
             </ContainerLogin>

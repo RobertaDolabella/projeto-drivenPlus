@@ -17,6 +17,7 @@ function App() {
   const [idPlano, setIdPlano] = useState(null)
   const [user, setUser] = useState()
   const [planos, setPlanos] = useState([])
+  const [dadosCartao, setDadosCartao] = useState(false)
   const [planoSelecionado, setPlanoSelecionado] = useState({"id": "loading",
   "userId": "loading",
   "membership": {
@@ -34,7 +35,7 @@ function App() {
     <div className='container-geral'>
       <BrowserRouter >
 
-        <UserContext.Provider value={{ token, setToken, idPlano, setIdPlano, senha, setSenha, user, setUser, planos, setPlanos, planoSelecionado, setPlanoSelecionado, nome, setNome }}>
+        <UserContext.Provider value={{ token, setToken, idPlano, setIdPlano, senha, setSenha, user, setUser, planos, setPlanos, planoSelecionado, setPlanoSelecionado, nome, setNome, dadosCartao, setDadosCartao }}>
           <Routes>
             <Route path="/" element={<TelaLogin />} />
             <Route path="/sign-up" element={<TelaSingUp />} />
