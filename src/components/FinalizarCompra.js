@@ -2,9 +2,9 @@ import axios from "axios"
 import { useContext } from "react"
 import { useNavigate } from "react-router-dom";
 import UserContext from "../UserContext"
-export default function FinalizarCompra({ plano, nomeCartao, numeroCartao, validadeCartao, codigoCartao,setFinalizar, finalizar }) {
+export default function FinalizarCompra({ plano, nomeCartao, numeroCartao, validadeCartao, codigoCartao, setFinalizar, finalizar }) {
 
-    const { planoSelecionado, setPlanoSelecionado} = useContext(UserContext);
+    const { planoSelecionado, setPlanoSelecionado } = useContext(UserContext);
 
     const navigate = useNavigate();
 
@@ -50,20 +50,27 @@ export default function FinalizarCompra({ plano, nomeCartao, numeroCartao, valid
         }
         setPlanoSelecionado(planoSelecionado)
         console.log("plano", planoSelecionado)
+       
+        const selecionadoSerializada = JSON.stringify(planoSelecionado)
+        localStorage.setItem("planoSelecionado",selecionadoSerializada)
 
+      
         navigate('/home')
     }
-
+    function voltar(event) {
+        event.preventDefault();
+        setFinalizar(false)
+    }
     return (
         <div className="container-off">
-            <div className="close" onClick={setFinalizar(false)}><ion-icon name="close-sharp"></ion-icon></div>
+            <div className="close" onClick={(e) => voltar(e)}><ion-icon name="close-sharp"></ion-icon></div>
             <div className="finalizar">
                 <h3>
                     Tem certeza que deseja assinar o plano {plano.name} (R$ {plano.price})?
                 </h3>
                 <div className="botao-comprar">
-                    <button className="botao-nao" onClick={setFinalizar(false)}>Não</button>
-                    <button className="botao-sim" onClick={()=>comprarPlano()}>Sim</button>
+                    <button className="botao-nao" onClick={(e) => voltar(e)}>Não</button>
+                    <button className="botao-sim" onClick={() => comprarPlano()}>Sim</button>
                 </div>
             </div>
         </div>
