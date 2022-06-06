@@ -24,7 +24,7 @@ export default function TelaLogin() {
             email: email,
             password: senha
         }
-        console.log(body)
+   
         const promiseLogin = axios.post(POSTLOGIN, body)
         promiseLogin.then((response) => gerarNome(response))
 

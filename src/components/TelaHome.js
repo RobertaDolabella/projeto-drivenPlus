@@ -39,7 +39,7 @@ export default function TelaHome() {
    
    
     function cancelarPlano(){
-        console.log("entrou no cancelar")
+        
          const promisedeletarPlano = axios.delete(DELETEPLANO, config)
          promisedeletarPlano.then(voltarParaSubscription)
     }

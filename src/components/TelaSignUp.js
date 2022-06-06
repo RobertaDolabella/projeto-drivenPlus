@@ -18,6 +18,7 @@ export default function TelaSingUp() {
 
     const POSTCADASTRO = 'https://mock-api.driven.com.br/api/v4/driven-plus/auth/sign-up'
     function gerarUsuario(event) {
+
         event.preventDefault();
         const body = {
             email: email,
@@ -25,7 +26,7 @@ export default function TelaSingUp() {
             cpf: cpf,
             password: senha
         }
-        console.log(body)
+    
         const promiseCadastro = axios.post(POSTCADASTRO, body)
         promiseCadastro.then(mudarParaLogin)
     }
@@ -44,9 +45,8 @@ export default function TelaSingUp() {
         }
         else {
             const cpf = e.target.value
-            console.log(cpf)
             setCpf(cpf)
-            console.log(cpf)
+          
         }
     }
     function mudarParaLogin() {

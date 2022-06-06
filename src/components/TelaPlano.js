@@ -120,15 +120,12 @@ export default function TelaPlano() {
     function chamarTelaFinalizar(event) {
         event.preventDefault();
         setFinalizar(true)
-        console.log(finalizar)
     }
 
     function voltarHome() {
         setIdPlano(null)
         navigate('/subscriptions')
     }
-
-    console.log(dadosCartao)
 
     return (
         <>

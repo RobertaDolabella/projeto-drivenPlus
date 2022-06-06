@@ -33,13 +33,11 @@ export default function FinalizarCompra({ plano, nomeCartao, numeroCartao, valid
 
     function comprarPlano() {
        
-        console.log(dadosCompra)
         const promiseAssinatura = axios.post(POSTASSINATURA, dadosCompra, config)
         promiseAssinatura.then((response) => selecionarPlano(response))
     }
     function selecionarPlano(response) {
-        console.log("resposta do promise get")
-        console.log(response.data)
+      
         const planoSelecionado = {
             "id": response.data.id,
             "userId": response.data.userId,
@@ -58,12 +56,9 @@ export default function FinalizarCompra({ plano, nomeCartao, numeroCartao, valid
         const cartaoSerializada = JSON.stringify(dadosCompra)
         localStorage.setItem("cartao", cartaoSerializada)
         setPlanoSelecionado(planoSelecionado)
-        console.log("plano", planoSelecionado)
-
-
+  
         const selecionadoSerializada = JSON.stringify(planoSelecionado)
         localStorage.setItem("planoSelecionado", selecionadoSerializada)
-
 
         navigate('/home')
     }
